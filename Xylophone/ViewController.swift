@@ -18,12 +18,16 @@ class ViewController: UIViewController {
     }
 
     @IBAction func KeyPressed(_ sender: UIButton) {
-        playSound()
+        if let buttonTilte = sender.currentTitle{
+            playSound(title: buttonTilte)
+        }
     }
     
-    func playSound() {
-        guard let path = Bundle.main.path(forResource: "Sounds/C", ofType:"wav") else {
+    func playSound(title: String) {
+        
+        guard let path = Bundle.main.path(forResource: "Sounds/\(title)", ofType:"wav") else {
             return }
+        
         let url = URL(fileURLWithPath: path)
 
         do {
